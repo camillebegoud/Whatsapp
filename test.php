@@ -1,11 +1,8 @@
 <?php
 
 require 'db.class.php';
+require 'config.php';
 
-$servername = "localhost";
-$username = "admin";
-$password = "azerty";
-$dbname = "whatsapp";
 
 $mail = "test@mail.fr";
 $pwd = "testsecret";
