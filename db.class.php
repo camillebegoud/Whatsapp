@@ -117,45 +117,75 @@ class Db
     public function update($table, $fields = array(), $values = array(), $id, $field_id)
     {
 
-        try {
-            //$sth = $this->dbco->prepare("UPDATE $table SET $field = '$val' WHERE $field_id=$id");
+        $updates=[];
 
+        foreach ($fields as $i => $field) {
+            
+            array_push($updates, $field."="."'".$values[$i]."'");
 
-
-            echo "<br>";
-
-            echo "<br>";
-            echo "<br>";
-            print_r($values[0]);
-            echo "<br>";
-            echo "<br>";
-            // print_r($keys_values[$fields]);
-            echo "<br>";
-            print_r($fields[0]);
-            foreach ($fields as $field) {
-                //$col1 = $fields[0];
-
-                $sql = "UPDATE $table SET $field= 'values[$field]', WHERE $field_id=$id";
-
-                $prep = $this->dbco->prepare($sql);
-
-                echo "<pre>";
-                print_r($sql);
-                echo "</pre>";
-                // $prep->execute($keys_values);
-                echo "<pre>";
-                print_r($prep);
-                echo "</pre>";
-            }
-            echo "update reussis";
-        } catch (PDOException $e) {
-            echo "Erreur : " . $e->getMessage();
         }
+
+        try {
+
+        $sql = "UPDATE $table SET ".implode(",",$updates)." WHERE $field_id = $id";
+        echo $sql;
+        $prep = $this->dbco->prepare($sql);
+        $prep->execute();
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
+
+
+        echo "update reussis";
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
     }
-    // UPDATE table
-    // SET colonne_1 = 'valeur 1', colonne_2 = 'valeur 2', colonne_3 = 'valeur 3'
-    // WHERE condition
+}
+
 }  
 //UPDATE $table SET $str_fields[0] = '$keys_values[0]', $str_fields[1] = '$keys_values[1]' WHERE 
 // "ALTER TABLE UsersADD DateInscription TIMESTAMP";
 //("UPDATE UsersSET pseudo='coquille'WHERE id=2");
+
+        // try {
+            //$sth = $this->dbco->prepare("UPDATE $table SET $field = '$val' WHERE $field_id=$id");
+
+
+
+    //         echo "<br>";
+
+    //         echo "<br>";
+    //         echo "<br>";
+    //         print_r($values[0]);
+    //         echo "<br>";
+    //         echo "<br>";
+    //         // print_r($keys_values[$fields]);
+    //         echo "<br>";
+    //         print_r($fields[0]);
+
+
+    //         foreach ($fields as $field) {
+    //             //$col1 = $fields[0];
+
+                
+
+    //             $sql = "UPDATE $table SET $field= 'values[$field]', WHERE $field_id=$id";
+
+    //             $prep = $this->dbco->prepare($sql);
+
+    //             echo "<pre>";
+    //             print_r($sql);
+    //             echo "</pre>";
+    //             // $prep->execute($keys_values);
+    //             echo "<pre>";
+    //             print_r($prep);
+    //             echo "</pre>";
+    //         }
+    //         echo "update reussis";
+    //     } catch (PDOException $e) {
+    //         echo "Erreur : " . $e->getMessage();
+    //     }
+    // }
+    // UPDATE table
+    // SET colonne_1 = 'valeur 1', colonne_2 = 'valeur 2', colonne_3 = 'valeur 3'
+    // WHERE condition
