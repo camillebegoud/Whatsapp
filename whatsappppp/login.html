@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon -->
+        <link rel="icon" href="img/favicon.fav" type="image/gif">
+        <!-- Google Font CDN -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="style.css">
+        <title>Connexion</title>
+    </head>
+  <body>
+    <section class="login_page">
+        <div class="formulaire_login">
+            <div class="connect">
+                <a href="#" class="connect_focus">Login</a>
+                <a href="signup.html"class="connect_passiv">Register</a> 
+                <div class="connect_exit">
+                    <a href="accueil.html"class="gg-arrow-long-right"></a>
+                </div>
+            </div>
+            <form method="post" id="form_login"action="login.php">
+                <div class="input_sub sub_input_resp">E-Mail
+                    <div id="error_email" class="hidden">Mail non valide</div>
+                </div>
+                <input class="input_resp"name="mail" id="mail" type="email" placeholder="E-Mail"  value="">
+                <div class="input_sub sub_input_resp">Passworld
+                    <div id="error_pwd" class="hidden">Mot de passe non valide</div>
+                </div>
+                <input class="input_resp" name="pwd"id="mdp" type="password" placeholder="Passworld"  value="">
+                <button type="button"class="resp_button" onclick="validation_login()">Log In</button>
+            </form>
+            <div class="noaccount">
+                <div class="noaccount_bis">Don't have an account yet ?</div>
+                <div class="create_account"><a href="signup.html">Sign up</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

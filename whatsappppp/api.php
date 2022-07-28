@@ -1,10 +1,8 @@
 <?php
 
-
-
 session_start();
 require_once("fonctions.php");
-require 'db.class.php';
+require'db.class';
 
 
 if(!isset($_GET["action"]))
@@ -34,8 +32,7 @@ echo json_encode($contacts);
     break;
     case "send_message":
 // Recupere le message en post
-
-    date_default_timezone_set('Europe/Paris');
+date_default_timezone_set("Europe/Paris");
     $post =  file_get_contents("php://input");
     $info= json_decode($post,true);
     $msg = $info["msg"];
@@ -70,7 +67,7 @@ $reponse["discussions"]=$compte["discussions"];
 array_push( $discussion["messages"],[
 "author"=>$_SESSION["mail"],
 "msg"=>$msg,
-"date"=> date("Y-m-d H:i:s")
+"date"=>date('Y-m-d H:i:s')
 ]);
 file_put_contents("discussions/$discussion_id",json_encode($discussion));
 
@@ -94,8 +91,7 @@ echo json_encode($reponse);
             case "refresh":
                 $resultats=["discussions"=>get_discussions()];
                 if(isset($_GET["discussion_id"]))
-                {
-                 $discussion_id=$_GET["discussion_id"];
+                {$discussion_id=$_GET["discussion_id"];
                  $resultats["messages"]= json_decode( file_get_contents("discussions/$discussion_id"),true)["messages"];
                 }
               echo json_encode(   $resultats  );

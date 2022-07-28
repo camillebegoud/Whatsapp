@@ -12,12 +12,12 @@ require_once("fonctions.php");
 
  $compte = moncompte();
 
-if(empty($compte["pseudo"]))
+if(!isset($compte["pseudo"]) )
 {
     header('Location: ./profil.php');
     exit;
 }
-$url = $compte["imageUrl"];
+$url = $compte["url"];
 ?>
 
 <!doctype html>

@@ -7,7 +7,7 @@ $compte= moncompte();
 
 $url = $_POST["url"];
 $pseudo = $_POST["pseudo"];
-
+$_SESSION['compte']
 $id = $compte['user_id'];
 
 $table = 'user';
@@ -17,10 +17,6 @@ $values = array($url,$pseudo);
 $field_id='user_id';
 
 $db -> update($table,$fields,$values,$id, $field_id);
-
-
-$verifpseudo = moncompte();
-$_SESSION['pseudo'] = $verifpseudo['pseudo'];
 
 header('Location: ./profil.php');
 
